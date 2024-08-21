@@ -106,7 +106,7 @@ app.get('/api/get-incompatibilities-from-code/:code',
 app.post('/api/add-course-to-student/:code/:id',
     [
         check('code').isLength({ min: 7, max: 7 }).withMessage('Invalid course code, 7 characters needed.'),
-        check('code').isInt().withMessage('Invalid student id')
+        check('id').isInt().withMessage('Invalid student id')
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -118,7 +118,7 @@ app.post('/api/add-course-to-student/:code/:id',
             const result = enrollmentsDao.addCourseToStudent(req.params.code, req.params.id);
             res.json(result);
         } catch{
-            res.status(503).json({ error: `Database error during the creation of new enrollment: ${err}` });
+            res.status(500).json({ error: `Database error during the creation of new enrollment: ${err}` });
         }
     }
 );
@@ -126,7 +126,7 @@ app.post('/api/add-course-to-student/:code/:id',
 app.delete('/api/delete-course-from-student/:code/:id',
     [
         check('code').isLength({ min: 7, max: 7 }).withMessage('Invalid course code, 7 characters needed.'),
-        check('code').isInt().withMessage('Invalid student id')
+        check('id').isInt().withMessage('Invalid student id')
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -138,7 +138,7 @@ app.delete('/api/delete-course-from-student/:code/:id',
             const result = enrollmentsDao.deleteCourseFromStudent(req.params.code, req.params.id);
             res.json(result);
         } catch{
-            res.status(503).json({ error: `Database error during the creation of new enrollment: ${err}` });
+            res.status(500).json({ error: `Database error during the creation of new enrollment: ${err}` });
         }
     }
 );
