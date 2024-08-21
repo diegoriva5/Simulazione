@@ -1,0 +1,54 @@
+# This file could be used for testing the API with Visual Studio Code
+
+## List all courses
+GET http://localhost:3001/api/list-courses HTTP/1.1
+
+###
+
+## Get course from its code
+
+GET http://localhost:3001/api/get-course-from-code/:code HTTP/1.1
+
+###
+
+## Get maxstud of course from its code
+
+GET http://localhost:3001/api/get-maxstud-from-code/:code HTTP/1.1
+
+###
+
+## Get mandatory exam of a course from its code
+
+GET http://localhost:3001/api/get-mandatory-from-code/:code HTTP/1.1
+
+###
+
+## Get incompatibilities from code
+
+GET http://localhost:3001/api/get-incompatibilities-from-code/:code HTTP/1.1
+
+###
+
+## Add course to a student
+
+POST http://localhost:3001/api/add-course-to-student/:code/:id HTTP/1.1
+
+###
+
+## Delete course from a student
+
+DELETE http://localhost:3001/api/delete-course-from-student/:code/:id HTTP/1.1
+
+###
+
+## List all students
+
+GET http://localhost:3001/api/list-students HTTP/1.1
+
+###
+
+## Get student from its id
+
+http://localhost:3001/api/get-student/:id HTTP/1.1
+
+###
